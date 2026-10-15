@@ -15,6 +15,6 @@ class LanguageModel(ABC):
 
     @abstractmethod
     def run_chain(
-        self, question: str, prompt: ChatPromptTemplate, retriever: VectorStoreRetriever
+        self, question: str, retriever: VectorStoreRetriever
     ) -> str:
         pass

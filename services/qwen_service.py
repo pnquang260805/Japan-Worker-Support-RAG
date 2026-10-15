@@ -2,9 +2,17 @@ from interface.language_model import LanguageModel
 from configs.app_config import AppConfig
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_core.prompts import ChatPromptTemplate
 
+
+def _format_docs(docs):
+    parts = []
+    for d in docs:
+        src = d.metadata.get("source", "unknown")
+        page = d.metadata.get("page", "?")
+        parts.append(f"[source: {src}, page: {page}]\n{d.page_content}")
+    return "\n\n---\n\n".join(parts)
 
 class QwenService(LanguageModel):
     def __init__(self):
@@ -52,7 +60,7 @@ class QwenService(LanguageModel):
             self._build_system_prompt()
         parser = StrOutputParser()
         rag_chain = (
-            ({self._context_key: retriever, self._question_key: RunnablePassthrough()})
+            ({self._context_key: retriever | RunnableLambda(_format_docs) , self._question_key: RunnablePassthrough()})
             | self.prompt
             | self.lm
             | parser
