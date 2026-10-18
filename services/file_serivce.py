@@ -54,6 +54,4 @@ class FileService:
         except Exception as e:
             raise HTTPException(status_code=400, detail=e)
 
-# Dependency provider (giống @Autowired)
-def get_file_service() -> FileService:
-    return FileService()
+

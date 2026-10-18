@@ -22,5 +22,3 @@ class EmbedService:
 
     def embed_query(self, query: str) -> List[float]:
         return self.embeddings.embed_query(query)
-
-    

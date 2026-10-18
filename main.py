@@ -7,7 +7,7 @@ from configs.app_config import AppConfig
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from fastapi import FastAPI
-from controllers import file_controller, lm_controller
+from controllers import file_controller, lm_controller, ingest_controller
 
 def asking_lm():
     conf = AppConfig()
@@ -40,6 +40,6 @@ def asking_lm():
 app = FastAPI()
 app.include_router(file_controller.router)
 app.include_router(lm_controller.router)
-
+app.include_router(ingest_controller.router)
 # if __name__ == "__main__":
     # asking_lm()

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, File, UploadFile
-from services.file_serivce import get_file_service, FileService
+from services.file_serivce import FileService
+from common.dependencies import get_file_service
 
 router = APIRouter(
     prefix="/files",
