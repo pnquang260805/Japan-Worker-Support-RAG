@@ -6,11 +6,11 @@ from langchain.chat_models import BaseChatModel
 
 class LanguageModel(ABC):
     @abstractmethod
-    def _create_model(self) -> BaseChatModel:
+    def _create_model(self) -> None:
         pass
 
     @abstractmethod
-    def _build_system_prompt(self) -> ChatPromptTemplate:
+    def _build_system_prompt(self) -> None:
         pass
 
     @abstractmethod

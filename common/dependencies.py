@@ -5,6 +5,8 @@ from services.file_serivce import FileService
 from services.store_service import MongoAtalasStoreService
 from services.qwen_service import QwenService
 from services.extract_service import ExtractService
+from services.google_lm_service import GoogleAI
+from interface.language_model import LanguageModel
 
 @lru_cache
 # lru_cache đảm bảo mỗi service chỉ khởi tạo 1 lần (không tạo lại embedding model/kết nối Mongo mỗi request).
@@ -14,8 +16,8 @@ def get_vector_store() -> MongoAtalasStoreService:
 
 
 @lru_cache
-def get_lm_service() -> QwenService:
-    return QwenService()
+def get_lm_service() -> LanguageModel:
+    return GoogleAI()
 
 
 def get_retriever():

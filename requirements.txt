@@ -16,3 +16,4 @@ langchain-community
 fastapi[standard]
 uvicorn
 python-multipart
+langchain-google-genai
