@@ -1,10 +1,12 @@
-from langchain_core.prompts import ChatPromptTemplate
 from abc import ABC, abstractmethod
-from langchain_core.vectorstores import VectorStoreRetriever
-from langchain.chat_models import BaseChatModel
+from typing import Optional
 
+from langchain_core.language_models import BaseChatModel
+from langchain_core.vectorstores import VectorStoreRetriever
 
 class LanguageModel(ABC):
+    lm: BaseChatModel
+
     @abstractmethod
     def _create_model(self) -> None:
         pass
@@ -15,6 +17,6 @@ class LanguageModel(ABC):
 
     @abstractmethod
     def run_chain(
-        self, question: str, retriever: VectorStoreRetriever
+        self, question: str, retriever: VectorStoreRetriever, history: Optional[dict]
     ) -> str:
         pass

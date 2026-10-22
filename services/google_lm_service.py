@@ -1,3 +1,6 @@
+from typing import Optional
+
+from operator import itemgetter
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
@@ -67,16 +70,18 @@ class GoogleAI(LanguageModel):
         self.prompt = ChatPromptTemplate(instruct)
 
     def run_chain(
-            self, question: str, retriever: VectorStoreRetriever
+            self, question: str, retriever: VectorStoreRetriever, history: Optional[dict]
     ) -> str:
         if self.prompt is None:
             self._build_system_prompt()
         parser = StrOutputParser()
         rag_chain = (
-                ({self._context_key: retriever | RunnableLambda(_format_docs),
-                  self._question_key: RunnablePassthrough()})
+                {self._context_key: itemgetter("question") | retriever | RunnableLambda(_format_docs),
+                 self._question_key: itemgetter("question"),  # Input bây giờ là dict
+                 "history": itemgetter("history")  # itemgeter: lấy key trong cái truyền vào
+                }
                 | self.prompt
                 | self.lm
                 | parser
         )
-        return rag_chain.invoke(question)
+        return rag_chain.invoke({"question": question, "history": history})

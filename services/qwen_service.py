@@ -55,7 +55,7 @@ class QwenService(LanguageModel):
         ]
         self.prompt = ChatPromptTemplate(instruct)
 
-    def run_chain(self, question, retriever):
+    def run_chain(self, question, retriever, history):
         if self.prompt is None:
             self._build_system_prompt()
         parser = StrOutputParser()
