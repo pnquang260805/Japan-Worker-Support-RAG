@@ -85,3 +85,4 @@ class GoogleAI(LanguageModel):
                 | parser
         )
         return rag_chain.invoke({"question": question, "history": history})
+        # input từ invoke(question) là chuỗi sang {} dạng dict nên cần itemgetter

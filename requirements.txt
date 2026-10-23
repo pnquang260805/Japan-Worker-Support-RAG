@@ -18,3 +18,5 @@ uvicorn
 python-multipart
 langchain-google-genai
 langgraph
+python-telegram-bot
+streamlit

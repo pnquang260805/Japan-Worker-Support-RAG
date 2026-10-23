@@ -19,3 +19,5 @@ class AppConfig:
         self.MONGO_INDEX = os.getenv("MONGO_INDEX", "index")
         self.UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER")
         self.GOOGLE_API = os.getenv("GOOGLE_API_KEY")
+        self.TELEGRAM_API = os.getenv('TELEGRAM_API')
+        self.RAG_APP_URL = os.getenv('RAG_APP_URL')
