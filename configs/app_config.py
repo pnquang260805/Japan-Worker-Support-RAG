@@ -3,7 +3,6 @@ import os
 
 load_dotenv()
 
-
 class AppConfig:
     def __init__(self):
         self.HUNGGING_FACE_TOKEN = os.getenv("HUNGGING_FACE_TOKEN")
@@ -21,3 +20,4 @@ class AppConfig:
         self.GOOGLE_API = os.getenv("GOOGLE_API_KEY")
         self.TELEGRAM_API = os.getenv('TELEGRAM_API')
         self.RAG_APP_URL = os.getenv('RAG_APP_URL')
+        self.BCRYPT_SALT = os.getenv("BCRYPT_SALT")
