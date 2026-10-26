@@ -21,3 +21,4 @@ class AppConfig:
         self.TELEGRAM_API = os.getenv('TELEGRAM_API')
         self.RAG_APP_URL = os.getenv('RAG_APP_URL')
         self.BCRYPT_SALT = os.getenv("BCRYPT_SALT")
+        self.SQLITE_PATH = os.getenv('SQLITE_PATH')

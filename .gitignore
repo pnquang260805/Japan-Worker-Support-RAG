@@ -5,3 +5,4 @@ note các câu hỏi liên quan.md
 */*.pdf
 **/__pycache__
 .idea/
+**/*.db
