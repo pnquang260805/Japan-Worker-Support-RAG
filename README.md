@@ -1,1 +1,1 @@
-`notebooks/vLLM.ipynb`: Chạy trên google colab
+`notebooks/vLLM.ipynb`: Chạy trên google colab.
