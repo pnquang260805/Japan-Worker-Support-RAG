@@ -55,7 +55,6 @@ The project is organized around a retrieval pipeline:
 - FastAPI
 - Streamlit
 - LangChain
-- LangGraph
 - MongoDB Atlas
 - SQLite
 - Telegram Bot API
