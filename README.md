@@ -144,8 +144,3 @@ python bot.py
 - The application expects user credentials for the admin account.
 - Uploaded files are processed into vector documents for retrieval.
 - The project is best suited for internal knowledge management and document-oriented support scenarios.
-
-## License
-
-This project is available for internal and research use under the repository's existing license terms.
-
